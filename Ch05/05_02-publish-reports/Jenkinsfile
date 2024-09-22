@@ -8,10 +8,11 @@ pipeline {
     }
 
     stages {
-            agent {
-                docker {image python:latest }
-        }
+           
         stage('Requirements') {
+             agent {
+                docker {image python:latest }
+            }
             steps {
                 dir("${env.WORKSPACE}/Ch05/05_02-publish-reports"){
                     sh 'python3 -m venv venv'
