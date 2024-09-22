@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+
 
     options {
         buildDiscarder(logRotator(daysToKeepStr: '10', numToKeepStr: '10'))
@@ -8,6 +8,9 @@ pipeline {
     }
 
     stages {
+            agent {
+                docker {image python:latest }
+        }
         stage('Requirements') {
             steps {
                 dir("${env.WORKSPACE}/Ch05/05_02-publish-reports"){
